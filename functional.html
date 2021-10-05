@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Java script functions</title>
+	<!-- add mocha css, to show results -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+	<!-- add mocha framework code -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+	<script>
+		mocha.setup('bdd'); // minimal setup
+	</script>
+	<!-- add chai -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+	<script>
+		// chai has a lot of stuff, let's make assert global
+		let assert = chai.assert;
+	</script>
+</head>
+<body>
+	<p><strong>D5 Lab8:</strong></p>
+	Look in the Chrome developer console to see the output. CTRL_SHIFT_J <br>
+	Or on Firefox with CTRL_SHIFT_K <br><br>
+	<script>
+		/* runs test to see if expected argument is === to value returned by function2test argument */
+		function myFunctionTest(expected, found) {
+		  if (expected === found) {
+			return "TEST SUCCEEDED";
+		  } else {
+			return "TEST FAILED.  Expected " + expected + " found " + found;
+		  }
+		}
+		
+		function myFunctionTestForStringArray(expected, found) {
+		  return (
+			Array.isArray(expected) &&
+			Array.isArray(found) &&
+			expected.length === found.length &&
+			expected.every((val, index) => val === found[index])
+		  );
+		}				
+		
+		//4, 5
+		let arr = [9,1,2,-4,2,14];
+		const summ = arr.reduce(function(accumulator, elem) {return accumulator + elem;}, 0);
+		const mult = arr.reduce(function(accumulator, elem) {return accumulator * elem}, 1);
+		document.writeln("The sum of ["+ arr +"] is: " + summ + "<br/><br/>");
+		document.writeln("The multiply of ["+ arr +"] is: " + mult + "<br/><br/>");
+		
+		//6.
+		let word = 'jag testar';
+		const rev = word.split('').reduce((r, c) => c + r, '');
+		document.writeln("The '"+ word +"' of reverse is: " + rev + "<br/><br/>");
+		
+		//8
+		let wordarray = ['word','long','is','longestwordishere','one','carrier'];
+		let len = 4;
+		const longest = wordarray.filter(function(elem, i , array){return elem.length > len;});
+		document.writeln("The longer than "+ len +" of length of ["+ wordarray +"] word(s) are: [" + longest + "]<br/><br/>");
+
+	</script>
+</body>
+</html>
